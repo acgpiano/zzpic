@@ -1,0 +1,11 @@
+﻿{
+	"name": "ZZS pic search",
+	"version": "1.0",
+	"manifest_version": 2,
+	"description": "Search from a picture",
+	"browser_action": 
+	{
+		"default_icon": "icon.png",
+		"default_popup": "pop.html"
+	}
+}
