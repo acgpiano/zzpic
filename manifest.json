@@ -1,4 +1,8 @@
 ﻿{
+	"background":
+	{
+		"page": "background.html"
+	},
 	"name": "ZZS pic search",
 	"version": "1.0",
 	"manifest_version": 2,
