@@ -3,13 +3,14 @@
 	{
 		"page": "background.html"
 	},
+
 	"name": "ZZS pic search",
 	"version": "1.0",
 	"manifest_version": 2,
 	"description": "Search from a picture",
+	"permissions": [ "contextMenus","tabs", "http://*/*", "https://*/*", "notifications","activeTab"],
 	"browser_action": 
 	{
-		"default_icon": "icon.png",
-		"default_popup": "pop.html"
+		"default_icon": "icon.png"
 	}
 }
