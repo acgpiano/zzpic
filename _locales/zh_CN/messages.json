@@ -1,0 +1,111 @@
+{
+
+
+   "blur": {
+      "message": "模糊"
+   },
+   "border": {
+      "message": "高亮区域只画边框"
+   },
+   "cancel": {
+      "message": "取消"
+   },
+
+   "capture_tip": {
+      "message": "拖动鼠标截图（按Esc退出）"
+   },
+   "capturing": {
+      "message": "截图中，请稍候..."
+   },
+   "close": {
+      "message": "关闭"
+   },
+   "default_title": {
+      "message": "点击图标，启动截屏识图"
+   },
+   "description": {
+      "message": "直接用百度识图搜索图片，或者截取网页部分进行搜索。"
+   },
+   "failed_to_register_hot_key_for_screen_capture": {
+      "message": "屏幕区域截图快捷键已被其他应用程序占用，请重新定义。"
+   },
+   "failed_to_upload_image": {
+      "message": "图片上传失败，请稍候再试。"
+   },
+   "highlight": {
+      "message": " 高亮标记"
+   },
+   "hot_key_conflict": {
+      "message": "快捷键冲突。"
+   },
+   "loading": {
+      "message": "页面正在加载，请稍等。"
+   },
+   "lossless": {
+      "message": "无损截图"
+   },
+   "lossy": {
+      "message": "有损截图"
+   },
+   "name": {
+      "message": "百度识图"
+   },
+   "ok": {
+      "message": "截屏搜信息"
+   },
+   "option": {
+      "message": "选 项"
+   },
+   "save_and_close": {
+      "message": "保存并关闭"
+   },
+   "options": {
+      "message": "识图设置"
+   },
+   "photo_size_tip": {
+      "message": "注：建议图片大小不要超过3M。"
+   },
+   "progress_info": {
+      "message": "图片上传中，请稍候..."
+   },
+   "quality_setting": {
+      "message": "图像质量设定："
+   },
+   "shortcut_setting": {
+      "message": "快捷键设置："
+   },
+   "shortcutsetting_text": {
+      "message": "使用网页截图快捷键"
+   },
+   "warning_title":{
+      "message": "十分抱歉"
+   },
+   "info_title":{
+      "message": "温馨提示"
+   },
+   "special": {
+      "message": "此页面是特殊页面，无法进行截图。"
+   },
+   "search_ok": {
+      "message": "检索完毕"
+   },
+   "unknown_error": {
+      "message": "未知错误。"
+   },
+   "img_context":{
+      "message": "识图搜索图片信息"
+   },
+   "page_context": {
+      "message": "截屏搜信息"
+   },   
+   "drag_tip": {
+      "message": "按住鼠标不放，可以移动选择区域"
+   },   
+   "select_tip": {
+      "message": "按住鼠标不放，划取选择区域"
+   },
+   "progress_tip": {
+      "message": "识图中…"
+   }
+
+}
