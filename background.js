@@ -314,8 +314,8 @@ var contextMenu = {
 var search = {
     note:null,
     ajax : window.ajax||null,
-    host :'http://stu.baidu.com',
     searchBySrc : function(imageInfo){
+        var imgOption = localStorage.srcOpt || "baidu";
         var src = imageInfo.srcUrl,
         opts = {
           objurl : encodeURIComponent(src),
@@ -327,9 +327,21 @@ var search = {
           stt : 0,
           tn : 'shituresult',
           appid : 4
-        }, urlPre = '/i',url = search.host + urlPre;
-        url = url + "?" + search.constructQueryString(opts);
-        search.createNewTab(url);
+        },url = "";
+        if(imgOption == "baidu")
+        {
+            url = "http://stu.baidu.com/i" + "?" + search.constructQueryString(opts);
+            search.createNewTab(url);
+        }
+        else if(imgOption == "sogou")
+        {
+            url = "http://pic.sogou.com/ris?query=" + src;
+            search.createNewTab(url);
+        }
+        else
+        {
+            search.engine360(src);
+        }
     },
 
     searchByImage : function(data){
@@ -344,7 +356,7 @@ var search = {
         },
 
         urlPre = '/i',
-        url = search.host + urlPre + "?" + search.constructQueryString(opts) ;
+        url = "http://stu.baidu.com" + urlPre + "?" + search.constructQueryString(opts) ;
         search.ajax({
           url : url,
           method : "POST",
@@ -393,7 +405,21 @@ var search = {
           msg:"hideProgress"
         });
        setTimeout(function(){//remove the progress bar shadow
-        search.createNewTab(response);
+        var imgOpt = localStorage.srcOpt || "baidu";
+        if(imgOpt == "baidu")
+        {
+            search.createNewTab(response);
+        }
+        else if(imgOpt == "sogou")
+        {
+            search.createNewTab("http://pic.sogou.com/ris?query="+response.substr(80));//替换成搜狗
+        }
+        else
+        {
+            var deUrl = search.urlDecode(response.substr(80));
+            var numEnd = deUrl.match(/&/).index;
+            search.engine360(deUrl.substr(0,numEnd));
+        }
         },10);
     },
     createNewTab : function(url){
@@ -412,6 +438,41 @@ var search = {
         }
       }
       return tmpParameter.join('&');
+    },
+    urlDecode : function(str){
+        var ret="";
+        for(var i=0;i<str.length;i++){
+            var chr = str.charAt(i);
+            if(chr == "+"){
+                ret+=" ";
+            }else if(chr=="%"){
+                var asc = str.substring(i+1,i+3);
+                if(parseInt("0x"+asc)>0x7f){
+                    ret+=String.fromCharCode(parseInt("0x"+asc+str.substring(i+4,i+6)));
+                    i+=5;
+                }else{
+                    ret+=String.fromCharCode(parseInt("0x"+asc));
+                    i+=2;
+                }
+            }else{
+                ret+= chr;
+            }
+        }
+        return ret;
+    },
+    engine360 : function(url){
+        var myForm = document.createElement("form");
+        myForm.method = "post";
+        myForm.action = "http://st.so.com/stu";
+        myForm.id = "stForm";
+        myForm.setAttribute("target","_blank");
+        var myInput = document.createElement("input");
+        myInput.id = "stInput";
+        myInput.setAttribute("name","imgurl");
+        myInput.setAttribute("value",url);
+        myForm.appendChild(myInput);
+        myForm.submit();
+        document.body.removeChild(myForm);
     },
     init:function(opt){
         for(var i in opt){

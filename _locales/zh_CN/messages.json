@@ -24,7 +24,7 @@
       "message": "点击图标，启动截屏识图"
    },
    "description": {
-      "message": "直接用百度识图搜索图片，或者截取网页部分进行搜索。"
+      "message": "直接识图搜索图片，或者截取网页部分进行搜索。"
    },
    "failed_to_register_hot_key_for_screen_capture": {
       "message": "屏幕区域截图快捷键已被其他应用程序占用，请重新定义。"
@@ -48,7 +48,7 @@
       "message": "有损截图"
    },
    "name": {
-      "message": "百度识图"
+      "message": "宅熊识图"
    },
    "ok": {
       "message": "截屏搜信息"
@@ -103,6 +103,18 @@
    },   
    "select_tip": {
       "message": "按住鼠标不放，划取选择区域"
+   },
+   "baidu_engine": {
+      "message": "百度识图"
+   },
+   "sogou_engine": {
+      "message": "搜狗识图"
+   },
+   "360_engine": {
+      "message": "360识图"
+   },
+   "engine_choose": {
+      "message": "识图引擎选择："
    },
    "progress_tip": {
       "message": "识图中…"

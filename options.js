@@ -1,6 +1,3 @@
-// Copyright (c) 2009 The Chromium Authors. All rights reserved.  Use of this
-// source code is governed by a BSD-style license that can be found in the
-// LICENSE file.
 
 var bg = chrome.extension.getBackgroundPage();
 
@@ -19,8 +16,12 @@ function init() {
   i18nReplace('screenshootQualitySetting', 'quality_setting');
   i18nReplace('lossyScreenShot', 'lossy');
   i18nReplace('losslessScreenShot', 'lossless');
-  i18nReplace('shorcutSetting', 'shortcut_setting');
+  i18nReplace('shorcutSetting', 'shortcut_setting'); //快捷键设置
   i18nReplace('settingShortcutText', 'shortcutsetting_text');
+  i18nReplace('engineChooseTitle', 'engine_choose');
+  i18nReplace('baiduName', 'baidu_engine');
+  i18nReplace('sogouName', 'sogou_engine');
+  i18nReplace('360Name', '360_engine');
   if (isHighVersion()) {
     $('lossyScreenShot').innerText += ' (JPEG)';
     $('losslessScreenShot').innerText += ' (PNG)';
@@ -28,6 +29,7 @@ function init() {
  
    $('saveAndClose').addEventListener('click', saveAndClose);
   initScreenCaptureQuality();
+  initEngine();
   HotKeySetting.setup();
 }
 
@@ -35,7 +37,10 @@ function save() {
   localStorage.screenshootQuality =
       $('lossy').checked ? 'jpeg' : '' ||
       $('lossless').checked ? 'png' : '';
-
+  localStorage.srcOpt =
+      $('baidu').checked ? 'baidu' : '' ||
+      $('sogou').checked ? 'sogou' : '' ||
+      $('360').checked ? '360' : '';
   return HotKeySetting.save();
 }
 
@@ -49,6 +54,12 @@ function saveAndClose() {
 function initScreenCaptureQuality() {
   $('lossy').checked = localStorage.screenshootQuality == 'jpeg';
   $('lossless').checked = localStorage.screenshootQuality == 'png';
+}
+
+function initEngine(){
+  $('sogou').checked = localStorage.srcOpt == 'sogou';
+  $('360').checked = localStorage.srcOpt == '360';
+  $('baidu').checked = localStorage.srcOpt == 'baidu';
 }
 
 function i18nReplace(id, name) {
