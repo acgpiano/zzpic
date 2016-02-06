@@ -9,11 +9,11 @@
    "content_scripts": [ {
       "css": [ "style.css" ],
       "js": [ "page.js", "shortcut.js" ],
-      "matches": [ "http://*/*", "https://*/*", "ftp://*/*", "file://*/*" ],
+      "matches": [ "http://*/*", "https://*/*"],
       "run_at": "document_end"
    }, {
       "js": [ "isLoad.js" ],
-      "matches": [ "http://*/*", "https://*/*", "ftp://*/*", "file://*/*" ],
+      "matches": [ "http://*/*", "https://*/*"],
       "run_at": "document_start"
    } ],
    "default_locale":"zh_CN",
@@ -29,7 +29,7 @@
    "manifest_version": 2,
    "name": "__MSG_name__",
    "options_page": "options.html",
-   "permissions": [ "contextMenus","tabs", "http://*/*", "https://*/*", "notifications","activeTab"],
+   "permissions": ["activeTab", "contextMenus", "tabs", "notifications", "<all_urls>"],
    "update_url": "http://clients2.google.com/service/update2/crx",
    "version": "1.0",
    "web_accessible_resources": ["style.css","page_context.js","images/btn.png","images/cross.cur"]

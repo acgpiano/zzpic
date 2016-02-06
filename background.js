@@ -19,8 +19,13 @@ var screenshot = {
     if (HotKey.isEnabled()) {
       switch (keyCode) {
         case HotKey.getCharCode('area'):
-          screenshot.showSelectionArea();
-          break;
+            // add by zhangrongming@baidu.com
+            chrome.tabs.getSelected(null, function (tab){
+                chrome.tabs.captureVisibleTab(null, {format: "png", quality: 100},function(data){
+                    chrome.tabs.sendMessage(tab.id, {msg: 'show_selection_area',data:data}, null);
+                });
+            });
+            break;
       }
     }
   },
@@ -187,7 +192,7 @@ var screenshot = {
   },
   checkPermission:function(tab){
     //chrome-extension://
-    return !! (tab.url.match(/^(http:\/\/|https:\/\/|ftp:\/\/|file:\/\/)/));
+      return !! (tab.url.match(/^(http:\/\/|https:\/\/)/));
 
   },
   checkIfCaptrueable : function(tab){
@@ -230,6 +235,7 @@ var screenshot = {
 
   init: function() {
     localStorage.screenshootQuality = localStorage.screenshootQuality || 'png';
+    localStorage.srcOpt = localStorage.srcOpt || "baidu";
     screenshot.executeScriptsInExistingTabs();
     screenshot.addMessageListener();
   }
