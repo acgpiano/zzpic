@@ -8,6 +8,8 @@
 <a>https://chrome.google.com/webstore/detail/%E5%AE%85%E7%86%8A%E8%AF%86%E5%9B%BE/oalbiojgmmpffapglhnkaboeohdodmfg?hl=zh-CN</a>
 <p>上不了的就在度盘下载吧：</p>
 <a>http://pan.baidu.com/s/1qXkWjZA</a>
+<p>1.打开chrome的拓展管理界面，不会的找不到的的地址栏直接输入：chrome://extensions/</p>
+<p>2.将解压好的crx文件拖到刚才的页面（不要最大化），没错，就是拖进去，不懂的就算了(别用了)</p>
 <h3>使用方法</h3>
 <p>安装好后直接点击插件图标就可以使用截图搜索</p>
 <p>或者在网页中右键，如果是图片可以直接搜索，不是图片截图搜索</p>
