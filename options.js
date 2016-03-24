@@ -22,6 +22,7 @@ function init() {
   i18nReplace('baiduName', 'baidu_engine');
   i18nReplace('sogouName', 'sogou_engine');
   i18nReplace('360Name', '360_engine');
+  i18nReplace('selfAdd', 'self_add');
   if (isHighVersion()) {
     $('lossyScreenShot').innerText += ' (JPEG)';
     $('losslessScreenShot').innerText += ' (PNG)';

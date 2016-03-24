@@ -113,6 +113,9 @@
    "360_engine": {
       "message": "360识图"
    },
+   "self_add": {
+      "message": "自定义添加："
+   },
    "engine_choose": {
       "message": "识图引擎选择："
    },
