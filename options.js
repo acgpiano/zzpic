@@ -23,12 +23,16 @@ function init() {
   i18nReplace('baiduName', 'baidu_engine');
   i18nReplace('sogouName', 'sogou_engine');
   i18nReplace('360Name', '360_engine');
+  i18nReplace('selfName', 'self_name');
   i18nReplace('selfUrl', 'self_add');
   i18nReplace('selfSave', 'self_save');
   i18nReplace('selfTitle', 'self_title');
   if (isHighVersion()) {
     $('lossyScreenShot').innerText += ' (JPEG)';
     $('losslessScreenShot').innerText += ' (PNG)';
+  }
+  for(var i in read){
+    $('selfmenu').add(new Option(read[i].name,read[i].url));
   }
 
   $('saveAndClose').addEventListener('click', saveAndClose);
@@ -39,13 +43,13 @@ function init() {
 }
 
 function selfSave() { //自定义数据的存储
-  if (!$('selfname').value || !$('selftext').value) {
+  if (!$('webname').value || !$('webtext').value) {
     alert("名称和网址为必填!");
     return;
   }
-  read[$('selfname').value] = {
-    name: $('selfname').value,
-    url: $('selftext').value
+  read[$('webname').value] = {
+    name: $('webname').value,
+    url: $('webtext').value
   }
   localStorage.setItem('selfAdd', JSON.stringify(read));
   alert("Success!");
