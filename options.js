@@ -1,5 +1,6 @@
-
 var bg = chrome.extension.getBackgroundPage();
+
+var read = JSON.parse(localStorage.getItem('selfAdd')) || {}; //自定义数据读取
 
 function $(id) {
   return document.getElementById(id);
@@ -22,26 +23,43 @@ function init() {
   i18nReplace('baiduName', 'baidu_engine');
   i18nReplace('sogouName', 'sogou_engine');
   i18nReplace('360Name', '360_engine');
-  i18nReplace('selfAdd', 'self_add');
+  i18nReplace('selfUrl', 'self_add');
+  i18nReplace('selfSave', 'self_save');
+  i18nReplace('selfTitle', 'self_title');
   if (isHighVersion()) {
     $('lossyScreenShot').innerText += ' (JPEG)';
     $('losslessScreenShot').innerText += ' (PNG)';
   }
- 
-   $('saveAndClose').addEventListener('click', saveAndClose);
+
+  $('saveAndClose').addEventListener('click', saveAndClose);
+  $('selfSave').addEventListener('click', selfSave);
   initScreenCaptureQuality();
   initEngine();
   HotKeySetting.setup();
 }
 
+function selfSave() { //自定义数据的存储
+  if (!$('selfname').value || !$('selftext').value) {
+    alert("名称和网址为必填!");
+    return;
+  }
+  read[$('selfname').value] = {
+    name: $('selfname').value,
+    url: $('selftext').value
+  }
+  localStorage.setItem('selfAdd', JSON.stringify(read));
+  alert("Success!");
+  console.log(read);
+}
+
 function save() {
   localStorage.screenshootQuality =
-      $('lossy').checked ? 'jpeg' : '' ||
-      $('lossless').checked ? 'png' : '';
+    $('lossy').checked ? 'jpeg' : '' ||
+    $('lossless').checked ? 'png' : '';
   localStorage.srcOpt =
-      $('baidu').checked ? 'baidu' : '' ||
-      $('sogou').checked ? 'sogou' : '' ||
-      $('360').checked ? '360' : '';
+    $('baidu').checked ? 'baidu' : '' ||
+    $('sogou').checked ? 'sogou' : '' ||
+    $('360').checked ? '360' : '';
   return HotKeySetting.save();
 }
 
@@ -57,7 +75,7 @@ function initScreenCaptureQuality() {
   $('lossless').checked = localStorage.screenshootQuality == 'png';
 }
 
-function initEngine(){
+function initEngine() {
   $('sogou').checked = localStorage.srcOpt == 'sogou';
   $('360').checked = localStorage.srcOpt == '360';
   $('baidu').checked = localStorage.srcOpt == 'baidu';
@@ -74,7 +92,7 @@ if (CURRENT_LOCALE != 'zh_CN') {
 
 function isWindowsOrLinuxPlatform() {
   return navigator.userAgent.toLowerCase().indexOf('windows') > -1 ||
-      navigator.userAgent.toLowerCase().indexOf('linux') > -1;
+    navigator.userAgent.toLowerCase().indexOf('linux') > -1;
 }
 
 var HotKeySetting = (function() {
@@ -102,7 +120,7 @@ var HotKeySetting = (function() {
 
       $('area-capture-hot-key').selectedIndex =
         HotKey.getCharCode('area') - CHAR_CODE_OF_AT;
-      
+
 
       $('settingShortcut').addEventListener('click', function() {
         hotkey.setState(this.checked);
@@ -115,9 +133,9 @@ var HotKeySetting = (function() {
     validate: function() {
       var hotKeyLength =
         Array.prototype.filter.call(hotKeySelection,
-            function (element) {
-              return element.value != '@'
-            }
+          function(element) {
+            return element.value != '@'
+          }
         ).length;
       if (hotKeyLength != 0) {
         var validateMap = {};
