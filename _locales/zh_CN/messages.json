@@ -113,6 +113,18 @@
    "360_engine": {
       "message": "360识图"
    },
+   "self_title": {
+      "message": "自定义名称："
+   },
+   "self_add": {
+      "message": "自定义网址："
+   },
+   "self_save": {
+      "message": "添加"
+   },
+   "self_name": {
+      "message": "选择自定义"
+   },
    "engine_choose": {
       "message": "识图引擎选择："
    },
