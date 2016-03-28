@@ -37,7 +37,7 @@ function init() {
 	if (localStorage.selfIndex) {
 		$('selfmenu').options[localStorage.selfIndex].selected = true;
 	}
-	$('selfmenu').addEventListener('click', textshow);
+	$('selfmenu').addEventListener('change', textshow);
 	$('saveAndClose').addEventListener('click', saveAndClose);
 	$('selfSave').addEventListener('click', selfSave);
 	initScreenCaptureQuality();
