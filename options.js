@@ -1,6 +1,23 @@
 var bg = chrome.extension.getBackgroundPage();
-
+//localStorage.clear();//清除LocalStroge
 var read = JSON.parse(localStorage.getItem('selfAdd')) || {}; //自定义数据读取
+(function defengine() {//添加默认支持
+	read['谷歌图片'] = {
+		name: '谷歌图片',
+		url: 'http://www.google.com/searchbyimage?image_url='
+	}
+	localStorage.setItem('selfAdd', JSON.stringify(read));
+	read['IQDB'] = {
+		name: 'IQDB',
+		url: 'http://iqdb.org/?url='
+	}
+	localStorage.setItem('selfAdd', JSON.stringify(read));
+	read['Tineye'] = {
+		name: 'Tineye',
+		url: 'http://tineye.com/search/?url='
+	}
+	localStorage.setItem('selfAdd', JSON.stringify(read));
+})();
 
 function $(id) {
 	return document.getElementById(id);
@@ -56,8 +73,10 @@ function selfSave() { //自定义数据的存储
 	}
 	localStorage.setItem('selfAdd', JSON.stringify(read));
 	var selfIndex = $('selfmenu').selectedIndex;
-	localStorage.selfIndex = selfIndex;
-	localStorage.selfurl = $('selfmenu').options[selfIndex].value;
+	if (selfIndex >= 0) {
+		localStorage.selfIndex = selfIndex;
+		localStorage.selfurl = $('selfmenu').options[selfIndex].value;
+	}
 	alert("Success!");
 	history.go(0);
 	console.log(read);
