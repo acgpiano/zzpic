@@ -2,7 +2,7 @@
 <h3>Chrome 网页图片识别插件</h3>
 </br>
 <p>该插件是一个识图搜索插件，支持网页图片直接识别和截图识别</p>
-<p>目前支持国内百度，搜狗，360三个搜索引擎，后续将支持更多国外的引擎</p>
+<p>现已完美支持各种搜索引擎</p>
 <h3>安装方法</h3>
 <p>能上真正互联网的直接从google拓展商店安装，地址：</p>
 <a>https://chrome.google.com/webstore/detail/%E5%AE%85%E7%86%8A%E8%AF%86%E5%9B%BE/oalbiojgmmpffapglhnkaboeohdodmfg?hl=zh-CN</a>
